@@ -1,0 +1,93 @@
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:rgb(245,245,245);
+}
+
+
+header{
+    background:rgb(33,150,243);
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+
+.logo{
+    width:250px;
+}
+
+
+header h1{
+    margin:10px 0;
+    font-size:32px;
+}
+
+
+header p{
+    margin:5px;
+    font-size:18px;
+}
+
+
+nav{
+    background:rgb(24,112,201);
+    text-align:center;
+    padding:18px;
+}
+
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 25px;
+    font-size:18px;
+    padding:8px 12px;
+}
+
+
+nav a:hover{
+    background:rgb(33,150,243);
+}
+
+
+.campus{
+    height:450px;
+    background-image:url("gate.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.welcome{
+    background:rgba(33,150,243,0.55);
+    color:white;
+    text-align:center;
+    padding:30px 45px;
+    box-shadow:0 4px 12px rgb(50,50,50);
+}
+
+
+.welcome h2{
+    margin:0 0 12px 0;
+    font-size:32px;
+}
+
+
+.welcome p{
+    margin:0;
+    font-size:18px;
+}
+
+
+footer{
+    background:rgb(33,150,243);
+    color:white;
+    text-align:center;
+    padding:18px;
+}
