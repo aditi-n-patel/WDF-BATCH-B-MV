@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Events - StudentHub Portal</title>
+
+    <link rel="stylesheet" href="event.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>StudentHub Portal</h1>
+
+    <p>Student Events and Activities</p>
+
+</header>
+
+
+<nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About</a>
+
+    <a href="register.html">Register</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="events.html">Events</a>
+
+    <a href="student.html">Student Dashboard</a>
+
+</nav>
+
+
+<main>
+
+    <h2>Upcoming Events</h2>
+
+    <div class="event-control">
+
+        <input type="text" id="searchEvent" placeholder="Search Event">
+
+        <select id="categoryFilter">
+
+            <option value="All">All</option>
+
+            <option value="Technical">Technical</option>
+
+            <option value="Cultural">Cultural</option>
+
+            <option value="Sports">Sports</option>
+
+        </select>
+
+        <select id="sortEvent">
+
+            <option value="Date">Sort by Date</option>
+
+            <option value="Title">Sort by title</option>
+
+        </select>
+
+    </div>
+
+
+    <div id="event-container" class="event-container"></div>
+
+    <div id="pagination" class="pagination"></div>
+
+</main>
+
+
+<footer>
+
+    <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
+
+</footer>
+
+
+<script src="theme.js"></script>
+
+<script src="event.js"></script>
+
+</body>
+
+</html>
