@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>StudentHub Portal - Register</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="register.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>StudentHub Portal</h1>
+
+    <p>Student Registration</p>
+
+</header>
+
+<nav>
+
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+
+</nav>
+
+<main>
+
+    <div class="form-box">
+
+        <h2>Register Student</h2>
+
+        <form id="registerForm" action="register.php" method="POST">
+
+            <label>Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label>Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Mobile Number</label>
+            <input type="text" id="mobile" name="mobile" required>
+
+            <label>Institute Name</label>
+            <input type="text" id="institute" name="institute" required>
+
+            <label>Year</label>
+
+            <select id="year" name="year" required>
+
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+
+            </select>
+
+            <label>Course</label>
+            <input type="text" id="course" name="course" required>
+
+           <label>Roll No</label>
+            <input type="text" id="rollNo" name="rollNo" required>
+
+                <label>Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label>Password</label>
+                <input type="password" id="password" name="password" required>
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <p>&copy; 2026 StudentHub Portal. All Rights Reserved.</p>
+
+</footer>
+
+<script src="register.js"></script>
+<script src="theme.js"></script>
+
+</body>
+
+</html>
