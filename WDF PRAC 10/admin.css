@@ -1,0 +1,111 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(245, 248, 252);
+    color: rgb(40, 40, 40);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: rgb(33, 150, 243);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+}
+
+nav {
+    background-color: rgb(24, 112, 201);
+    padding: 14px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 18px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    flex: 1;
+}
+
+.welcome-box {
+    background-color: white;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-left: 5px solid rgb(33, 150, 243);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.welcome-box h2 {
+    color: rgb(24, 112, 201);
+    margin-bottom: 10px;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    text-align: center;
+    border-top: 4px solid rgb(33, 150, 243);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    color: rgb(24, 112, 201);
+    margin-bottom: 12px;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+footer {
+    background-color: rgb(24, 112, 201);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        width: 94%;
+    }
+}
+```
