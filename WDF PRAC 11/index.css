@@ -1,0 +1,235 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("gate2.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+header {
+    background: rgb(33,150,243);
+    color: white;
+
+    padding: 18px 35px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+header img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+
+header p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+
+main {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+.login-box {
+    width: 420px;
+
+    padding: 30px;
+
+    background: rgba(33,150,243,0.65);
+
+    border-left: 5px solid white;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+
+    color: white;
+}
+
+
+.login-box h2 {
+    text-align: center;
+
+    color: white;
+
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    font-size: 28px;
+
+    border-bottom: 2px solid white;
+
+    padding-bottom: 10px;
+}
+
+
+label {
+    display: block;
+
+    margin-top: 15px;
+
+    font-size: 16px;
+}
+
+
+input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 11px;
+
+    margin-top: 6px;
+
+    border: 1px solid white;
+
+    font-size: 16px;
+
+    background: rgba(255,255,255,0.85);
+}
+
+
+input:focus {
+    outline: none;
+
+    border: 2px solid white;
+}
+
+
+button {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 25px;
+
+    border: none;
+
+    background: white;
+
+    color: rgb(33,150,243);
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+
+button:hover {
+    background: rgb(235,245,255);
+
+    color: rgb(24,112,201);
+}
+
+
+.login-box p {
+    text-align: center;
+
+    font-size: 16px;
+
+    margin-top: 18px;
+}
+
+
+.login-box a {
+    color: white;
+
+    font-weight: bold;
+}
+
+
+footer {
+    background: rgb(24,112,201);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 15px;
+}
+
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 15px;
+    }
+
+
+    .header-content {
+        justify-content: center;
+    }
+
+
+    header h1 {
+        font-size: 25px;
+    }
+
+
+    header p {
+        font-size: 14px;
+    }
+
+
+    main {
+        padding: 30px 15px;
+    }
+
+
+    .login-box {
+        width: 100%;
+
+        padding: 25px;
+
+        box-sizing: border-box;
+    }
+
+}
+.dark-theme header {
+    background-color: rgb(25,55,85);
+}
+
+.dark-theme .login-box {
+    background: rgba(25,55,85,0.85);
+}
+
+.dark-theme button {
+    background-color: rgb(45,75,105);
+    color: white;
+}
+
+.dark-theme button:hover {
+    background-color: rgb(60,90,120);
+}
+
+.dark-theme footer {
+    background-color: rgb(15,35,55);
+}
