@@ -1,0 +1,249 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(245, 248, 252);
+    color: rgb(40, 40, 40);
+}
+
+header {
+    background-color: rgb(33, 150, 243);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 16px;
+}
+
+nav {
+    background-color: rgb(24, 112, 201);
+    padding: 14px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 16px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    width: 94%;
+    max-width: 1250px;
+    margin: 25px auto;
+}
+
+.form-section,
+.table-section {
+    background-color: white;
+    padding: 22px;
+    margin-bottom: 25px;
+    border: 1px solid rgb(220, 225, 230);
+}
+
+h2 {
+    color: rgb(24, 112, 201);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.form-section form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-section label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid rgb(190, 198, 207);
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: rgb(40, 40, 40);
+}
+
+.form-section textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+    outline: 2px solid rgb(33, 150, 243);
+    outline-offset: 1px;
+}
+
+.form-section button {
+    width: fit-content;
+    align-self: end;
+}
+
+button {
+    background-color: rgb(33, 150, 243);
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(24, 112, 201);
+}
+
+.cancel-link {
+    color: rgb(24, 112, 201);
+    align-self: center;
+    text-decoration: none;
+}
+
+.cancel-link:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 13px;
+    background-color: rgb(225, 242, 255);
+    border: 1px solid rgb(33, 150, 243);
+    color: rgb(20, 80, 130);
+    margin-bottom: 20px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 950px;
+}
+
+th,
+td {
+    border: 1px solid rgb(215, 220, 225);
+    padding: 11px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: rgb(33, 150, 243);
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(245, 248, 252);
+}
+
+.actions {
+    min-width: 115px;
+}
+
+.actions a {
+    display: inline-block;
+    color: rgb(24, 112, 201);
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+.actions form {
+    display: inline;
+}
+
+.delete-button {
+    background-color: rgb(220, 53, 69);
+}
+
+.delete-button:hover {
+    background-color: rgb(180, 35, 48);
+}
+
+.poster-thumbnail {
+    width: 100px;
+    height: 70px;
+    object-fit: contain;
+    border: 1px solid rgb(215, 220, 225);
+    background-color: white;
+}
+
+.poster-preview {
+    display: block;
+    max-width: 250px;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+footer {
+    background-color: rgb(24, 112, 201);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px;
+    }
+
+    main {
+        width: 96%;
+    }
+
+    .form-section,
+    .table-section {
+        padding: 14px;
+    }
+
+    .form-section form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-section button {
+        width: 100%;
+    }
+}
