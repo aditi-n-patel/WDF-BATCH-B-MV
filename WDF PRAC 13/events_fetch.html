@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Fetch API Events</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: rgb(245, 248, 252);
+            color: rgb(40, 40, 40);
+        }
+
+        header {
+            background-color: rgb(33, 150, 243);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            width: 92%;
+            max-width: 1100px;
+            margin: 25px auto;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgb(220, 225, 230);
+        }
+
+        h2 {
+            color: rgb(24, 112, 201);
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid rgb(190, 198, 207);
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 80px;
+        }
+
+        button {
+            background-color: rgb(33, 150, 243);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(24, 112, 201);
+        }
+
+        .delete-button {
+            background-color: rgb(220, 53, 69);
+            margin-left: 5px;
+        }
+
+        .cancel-button {
+            background-color: rgb(100, 100, 100);
+            margin-left: 5px;
+        }
+
+        #message {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            border: 1px solid rgb(215, 220, 225);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgb(33, 150, 243);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                width: 96%;
+            }
+
+            section {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>StudentHub Portal</h1>
+    <p>Event Management Using PHP JSON API and Fetch API</p>
+</header>
+
+<main>
+
+    <section>
+        <h2 id="formTitle">Add Event</h2>
+
+        <p id="message" aria-live="polite"></p>
+
+        <form id="eventForm">
+            <input type="hidden" id="eventId">
+
+            <label for="title">Event Title</label>
+            <input type="text" id="title" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" required></textarea>
+
+            <label for="category">Category</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="Technical">Technical</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Sports">Sports</option>
+            </select>
+
+            <label for="event_date">Event Date</label>
+            <input type="date" id="event_date" required>
+
+            <label for="venue">Venue</label>
+            <input type="text" id="venue" required>
+
+            <button type="submit" id="submitButton">Add Event</button>
+            <button type="button" id="cancelButton" class="cancel-button" hidden>
+                Cancel Edit
+            </button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Event Records</h2>
+
+        <button type="button" id="refreshButton">Refresh Events</button>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Venue</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="eventTable">
+                    <tr>
+                        <td colspan="7">Loading events...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    const apiURL = "events_api.php";
+
+    const eventForm = document.getElementById("eventForm");
+    const eventTable = document.getElementById("eventTable");
+    const message = document.getElementById("message");
+
+    function showMessage(text) {
+        message.textContent = text;
+    }
+
+    async function loadEvents() {
+        try {
+            const response = await fetch(apiURL);
+            const events = await response.json();
+
+            if (!response.ok) {
+                throw new Error(events.message || "Unable to load events.");
+            }
+
+            eventTable.replaceChildren();
+
+            if (events.length === 0) {
+                const row = eventTable.insertRow();
+                const cell = row.insertCell();
+                cell.colSpan = 7;
+                cell.textContent = "No events found.";
+                return;
+            }
+
+            events.forEach(event => {
+                const row = eventTable.insertRow();
+
+                [
+                    event.id,
+                    event.title,
+                    event.description,
+                    event.category,
+                    event.event_date,
+                    event.venue
+                ].forEach(value => {
+                    const cell = row.insertCell();
+                    cell.textContent = value ?? "";
+                });
+
+                const actions = row.insertCell();
+
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.type = "button";
+                editButton.addEventListener("click", () => editEvent(event));
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.type = "button";
+                deleteButton.className = "delete-button";
+                deleteButton.addEventListener("click", () => deleteEvent(event.id));
+
+                actions.append(editButton, deleteButton);
+            });
+        } catch (error) {
+            showMessage("Error loading events: " + error.message);
+        }
+    }
+
+    eventForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const id = document.getElementById("eventId").value;
+
+        const eventData = {
+            title: document.getElementById("title").value.trim(),
+            description: document.getElementById("description").value.trim(),
+            category: document.getElementById("category").value,
+            event_date: document.getElementById("event_date").value,
+            venue: document.getElementById("venue").value.trim()
+        };
+
+        const method = id ? "PUT" : "POST";
+
+        if (id) {
+            eventData.id = Number(id);
+        }
+
+        try {
+            const response = await fetch(apiURL, {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(eventData)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || "Operation failed.");
+            }
+
+            showMessage(result.message);
+            eventForm.reset();
+            resetForm();
+            await loadEvents();
+        } catch (error) {
+            showMessage("Error: " + error.message);
+        }
+    });
+
+    function editEvent(event) {
+        document.getElementById("eventId").value = event.id;
+        document.getElementById("title").value = event.title;
+        document.getElementById("description").value = event.description;
+        document.getElementById("category").value = event.category;
+        document.getElementById("event_date").value = event.event_date;
+        document.getElementById("venue").value = event.venue;
+
+        document.getElementById("formTitle").textContent = "Update Event";
+        document.getElementById("submitButton").textContent = "Update Event";
+        document.getElementById("cancelButton").hidden = false;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function deleteEvent(id) {
+        if (!confirm("Are you sure you want to delete this event?")) {
+            return;
+        }
+
+        try {
+            const response = await fetch(apiURL, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id: Number(id) })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || "Unable to delete event.");
+            }
+
+            showMessage(result.message);
+            await loadEvents();
+        } catch (error) {
+            showMessage("Error: " + error.message);
+        }
+    }
+
+    function resetForm() {
+        document.getElementById("eventId").value = "";
+        document.getElementById("formTitle").textContent = "Add Event";
+        document.getElementById("submitButton").textContent = "Add Event";
+        document.getElementById("cancelButton").hidden = true;
+    }
+
+    document.getElementById("cancelButton").addEventListener("click", function () {
+        eventForm.reset();
+        resetForm();
+        showMessage("");
+    });
+
+    document.getElementById("refreshButton").addEventListener("click", loadEvents);
+
+    loadEvents();
+</script>
+
+</body>
+</html>
